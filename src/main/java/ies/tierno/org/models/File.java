@@ -40,19 +40,28 @@ public abstract class File {
         return Objects.hash(size, location);
     }
 
-    public abstract void abrir();
+    // Método abstracto que deben implementar las subclases
+    public abstract void open();
 
+    // Método común para mostrar información básica
     public void mostrarInfo() {
         System.out.println("Tamaño: " + size);
         System.out.println("Ubicación: " + location);
     }
 
-    public void cambiarRuta(String nuevaRuta) {
-        if (location.equals(nuevaRuta)) {
+    // Método común que pueden usar las subclases
+    public void openGeneral() {
+        System.out.println("Archivo ubicado en: " + location);
+        System.out.println("Tamaño: " + size + " KB");
+    }
+
+    // Método para cambiar ruta (antes llamado cambiarRuta)
+    public void move(String newPath) {
+        if (location.equals(newPath)) {
             System.out.println("La ruta es la misma, no se ha modificado");
         } else {
-            location = nuevaRuta;
-            System.out.println("Archivo movido a: " + nuevaRuta);
+            location = newPath;
+            System.out.println("Archivo movido a: " + newPath);
         }
     }
 }

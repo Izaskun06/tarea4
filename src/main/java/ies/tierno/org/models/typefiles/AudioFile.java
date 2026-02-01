@@ -1,14 +1,14 @@
 package ies.tierno.org.models.typefiles;
 
-import ies.tierno.models.File;
+import ies.tierno.org.models.File;
 import java.util.Objects;
 
 public class AudioFile extends File {
 
     private String duration;
 
-    public AudioFile(int fileSize, String path, String duration) {
-        super(fileSize, path);
+    public AudioFile(int fileSize, String location, String duration) {
+        super(fileSize, location);
         this.duration = duration;
     }
 
@@ -24,19 +24,20 @@ public class AudioFile extends File {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
+        if (!super.equals(obj)) return false;
         AudioFile other = (AudioFile) obj;
         return Objects.equals(duration, other.duration);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(duration);
+        return Objects.hash(super.hashCode(), duration);
     }
 
     @Override
     public void open() {
         System.out.println("Archivo de tipo audio");
-        openGeneral();
+        super.openGeneral();
         System.out.println("Duración: " + duration);
     }
 }

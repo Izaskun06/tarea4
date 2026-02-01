@@ -8,8 +8,8 @@ public class ImageFile extends File {
     private int imageWidth;
     private int imageHeight;
 
-    public ImageFile(int fileSize, String path, int imageWidth, int imageHeight) {
-        super(fileSize, path);
+    public ImageFile(int fileSize, String location, int imageWidth, int imageHeight) {
+        super(fileSize, location);
         this.imageWidth = imageWidth;
         this.imageHeight = imageHeight;
     }
@@ -34,6 +34,7 @@ public class ImageFile extends File {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (!(obj instanceof ImageFile)) return false;
+        if (!super.equals(obj)) return false;
         ImageFile other = (ImageFile) obj;
         return imageWidth == other.imageWidth &&
                 imageHeight == other.imageHeight;
@@ -41,13 +42,13 @@ public class ImageFile extends File {
 
     @Override
     public int hashCode() {
-        return Objects.hash(imageWidth, imageHeight);
+        return Objects.hash(super.hashCode(), imageWidth, imageHeight);
     }
 
     @Override
     public void open() {
         System.out.println("Archivo de imagen");
-        openGeneral();
+        super.openGeneral();
         System.out.println("Resolución:");
         System.out.println(imageWidth + " x " + imageHeight);
     }

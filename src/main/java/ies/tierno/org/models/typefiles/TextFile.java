@@ -6,8 +6,9 @@ public class TextFile extends File {
 
     private String content;
 
-    public TextFile(int size, String path, String content) {
-        super(size, path);
+    // Constructor corregido
+    public TextFile(int size, String location, String content) {
+        super(size, location);
         this.content = content;
     }
 
@@ -22,7 +23,7 @@ public class TextFile extends File {
     @Override
     public void open() {
         System.out.println("Abriendo archivo de tipo texto");
-        openGeneral();
+        super.openGeneral();
         System.out.println("Texto del archivo:");
         System.out.println(content);
     }

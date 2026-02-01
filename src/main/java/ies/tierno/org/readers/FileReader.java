@@ -1,4 +1,4 @@
-package org.ies.tierno.readers;
+package ies.tierno.org.readers;
 
 import ies.tierno.org.models.File;
 import ies.tierno.org.models.typefiles.TextFile;
